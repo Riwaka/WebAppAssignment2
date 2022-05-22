@@ -1,0 +1,47 @@
+﻿@model WebDevAssignmnet2.Models.Seller
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="login-form mb-5">
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("Login", "Seller", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email)
+                                    @Html.TextBoxFor(model => model.Email, "", new { @class = "form-control", @placeholder = "Email" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Password)
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
