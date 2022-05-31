@@ -1,0 +1,101 @@
+﻿@model WebDevAssignmnet2.Models.Cloth
+
+@{
+    ViewBag.Title = "Details";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="login-form mb-5 padd">
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            Details!
+                        </div>
+                        <div class="card-body">
+                            <div>
+                                <dl class="dl-horizontal">
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Gender)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Gender)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Category)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Category)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Condition)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Condition)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Color)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Color)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Size)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Size)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Brand)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Brand)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Location)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.Location)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </dt>
+
+                                    <dd>
+                                        $@Html.DisplayFor(model => model.Price)
+                                    </dd>
+
+                                </dl>
+                            </div>
+                            <p>
+                                @Html.ActionLink("Back to List", "Clothing")
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>>

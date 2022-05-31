@@ -1,0 +1,72 @@
+﻿@model WebDevAssignmnet2.Models.Seller
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="login-form mb-5 padd">
+        <div class="cotainer">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Register here! </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("Register", "Seller", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                if (TempData["Message"] != null)
+                                {
+                                    <div>
+                                        <p style="color:red;"><strong>Alert:</strong> @TempData["Message"].ToString()</p>
+                                    </div>
+                                }
+                                <div class="form-group" style="padding-top:10px">
+                                    @Html.LabelFor(model => model.Name)
+                                    @Html.TextBoxFor(model => model.Name, "", new { @class = "form-control", @placeholder = "Name" })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group" style="padding-top:10px">
+                                    @Html.LabelFor(model => model.Address)
+                                    @Html.TextBoxFor(model => model.Address, "", new { @class = "form-control", @placeholder = "Address" })
+                                    @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group" style="padding-top:10px">
+                                    @Html.LabelFor(model => model.Phone)
+                                    @Html.TextBoxFor(model => model.Phone, "", new { @class = "form-control", @placeholder = "Phone" })
+                                    @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group" style="padding-top:10px">
+                                    @Html.LabelFor(model => model.Email)
+                                    @Html.TextBoxFor(model => model.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group" style="padding-top:10px">
+                                    @Html.LabelFor(model => model.Username)
+                                    @Html.TextBoxFor(model => model.Username, "", new { @class = "form-control", @placeholder = "Username" })
+                                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group" style="padding-top:10px">
+                                    @Html.LabelFor(model => model.Password)
+                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group" style="padding-top:20px">
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Register" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -52,6 +52,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -128,28 +134,32 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClothesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SellerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Seller.Context.cs">
+    <Compile Include="Models\Cloth.cs">
+      <DependentUpon>ClothingStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClothingStoreModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Seller.Context.tt</DependentUpon>
+      <DependentUpon>ClothingStoreModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClothingStoreModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClothingStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ClothingStoreModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClothingStoreModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Seller.cs">
-      <DependentUpon>Seller.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Seller.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Seller.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Seller1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Seller.tt</DependentUpon>
+      <DependentUpon>ClothingStoreModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -158,34 +168,46 @@
     <Content Include="App_Data\StoreDatabase_log.ldf">
       <DependentUpon>StoreDatabase.mdf</DependentUpon>
     </Content>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Style.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\Homepage.jpg" />
-    <Content Include="Models\Seller.Context.tt">
+    <Content Include="Images\homepageJacket.jpg" />
+    <Content Include="Images\homepageMain.jpg" />
+    <Content Include="Images\homepageT.jpg" />
+    <Content Include="Models\ClothingStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Seller.Context.cs</LastGenOutput>
-      <DependentUpon>Seller.edmx</DependentUpon>
+      <DependentUpon>ClothingStoreModel.edmx</DependentUpon>
+      <LastGenOutput>ClothingStoreModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Seller.tt">
+    <Content Include="Models\ClothingStoreModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Seller.edmx</DependentUpon>
-      <LastGenOutput>Seller1.cs</LastGenOutput>
+      <DependentUpon>ClothingStoreModel.edmx</DependentUpon>
+      <LastGenOutput>ClothingStoreModel.cs</LastGenOutput>
     </Content>
+    <EntityDeploy Include="Models\ClothingStoreModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ClothingStoreModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ClothingStoreModel.edmx.diagram">
+      <DependentUpon>ClothingStoreModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\Seller.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Seller.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Seller.edmx.diagram">
-      <DependentUpon>Seller.edmx</DependentUpon>
-    </Content>
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -208,23 +230,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Seller\Login.cshtml" />
+    <Content Include="Views\Seller\Register.cshtml" />
+    <Content Include="Views\Seller\Edit.cshtml" />
+    <Content Include="Views\Clothes\Clothing.cshtml" />
+    <Content Include="Views\Clothes\Create.cshtml" />
+    <Content Include="Views\Clothes\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />

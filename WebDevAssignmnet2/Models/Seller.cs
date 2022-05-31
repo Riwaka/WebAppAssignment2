@@ -11,15 +11,25 @@ namespace WebDevAssignmnet2.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Seller
     {
         public int SId { get; set; }
+        [Required(ErrorMessage = "Name Required")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Address Required")]
         public string Address { get; set; }
+        [Required(ErrorMessage = "Phone Required")]
+        [Phone(ErrorMessage = "Incorrect Phone Format")]
         public string Phone { get; set; }
+        [Required(ErrorMessage = "Email Required")]
+        [EmailAddress(ErrorMessage = "Incorrect email format")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Username Required")]
         public string Username { get; set; }
+        [Required(ErrorMessage = "Password Required")]
+
         public string Password { get; set; }
     }
 }

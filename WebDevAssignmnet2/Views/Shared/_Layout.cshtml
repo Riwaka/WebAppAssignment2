@@ -1,45 +1,99 @@
 ﻿<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta name="viewport" content="width:device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Online Clothing</title>
+    <link href="~/content/site.css" rel="stylesheet" />
+    <link href="~/content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 @Html.ActionLink("Online Clothing Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="~/Seller/Login">Login</a>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="me-auto navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="~/Clothes/Clothing">View Clothes</a>
                     </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+                    @if (Session["SellerId"] != null)
+                    {
+                        <li class="nav-item active">
+                            <a class="nav-link" href="~/Seller/Edit/@Session["SellerId"]">My Profile</a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="~/Clothes/Create">Create a Listing</a>
+                        </li>
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="~/Seller/Logout">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item active mr-sm-2">
+                            <a class="nav-link" href="~/Seller/Login">Login/Register</a>
+                        </li>
+                    }
+                </ul>
+                @if (Session["SellerId"] != null)
+                {
+                    <span class="navbar-text">
+                        <a class="nav-link font-weight-bold">Welcome @Session["UserName"]!</a>
+                    </span>
+                }
+            </div>
+            
+        </div>
+    </nav>
+    <div class="body-content">
+        @RenderBody()
+        <hr/>
+    </div>
+    <footer class="text-center text-lg-start" style="background-color: #e3f2fd;">
+        <section class="">
+            <div class="container text-center text-md-start mt-2">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-2">
+                        <h4>Online Clothing!</h4>
+                        <p>
+                            Online clothes Store is a store where users can buy and sell new and used clothes!
+                        </p>
+                        <p> We hope you have a wonderful experience using our website.</p>
+                    </div>
+
+                    <div class="col-md-1 col-lg-2 col-xl-2 mx-auto mb-2">
+                        <h4>
+                            Contact us Here!
+                        </h4>
+                        <p> Location: Petone, New Zealand</p>
+                        <p> Phone: 020111999222</p>
+                        <p> Email: <a href="">OnlineClothes@email.com</a></p>
+                    </div>
+
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-2">
+                        <h4>
+                            Info
+                        </h4>
+                        <p> <a href="">FAQS</a></p>
+                        <p> <a href="">Returns</a></p>
+                        <p> <a href="">Delivery</a></p>
+                        <p> <a href="">Size Guide</a></p>
+                        <p> <a href="">Sourcing Code of Conduct</a></p>
+                    </div>
+                    </div>
+                </div>
+</section>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 </body>
 </html>
+

@@ -13,10 +13,10 @@ namespace WebDevAssignmnet2.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StoreDatabaseEntities : DbContext
+    public partial class StoreDatabaseEntities1 : DbContext
     {
-        public StoreDatabaseEntities()
-            : base("name=StoreDatabaseEntities")
+        public StoreDatabaseEntities1()
+            : base("name=StoreDatabaseEntities1")
         {
         }
     
@@ -25,6 +25,7 @@ namespace WebDevAssignmnet2.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cloth> Clothes { get; set; }
         public virtual DbSet<Seller> Sellers { get; set; }
     }
 }

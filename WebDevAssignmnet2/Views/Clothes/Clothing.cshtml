@@ -1,0 +1,66 @@
+﻿@model IEnumerable<WebDevAssignmnet2.Models.Cloth>
+
+@{
+    ViewBag.Title = "Clothing";
+}
+
+<h2 class="container">View Clothing Here!</h2>
+
+@using (Html.BeginForm("Clothing", "Clothes", FormMethod.Get))
+{
+    <p class="container" style="padding-top:25px">
+        Search: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
+<body>
+    <table class="table container table-striped table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">
+                    Category
+                </th>
+                <th scope="col">
+                    Size
+                </th>
+                <th scope="col">
+                    Location
+                </th>
+                <th scope="col">
+                    Price
+                </th>
+                <th scope="col">
+                    Gender
+                </th>
+                <th scope="col">
+                    Details
+                </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Cid })
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+</body>
