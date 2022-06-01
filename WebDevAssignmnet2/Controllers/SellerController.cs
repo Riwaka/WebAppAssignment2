@@ -42,6 +42,7 @@ namespace WebDevAssignmnet2.Controllers
                     Session["Username"] = user.Username.ToString();
                     return Content(String.Format("<script language='javascript' type='text/javascript'>alert('Logged in successfully as {0}!');window.location.href='/';</script>", user.Username));
                 }
+                TempData["Message"] = "Username or Password is Incorrect";
                 return View("Login");
             }
             return View(seller);
@@ -111,7 +112,7 @@ namespace WebDevAssignmnet2.Controllers
                 var user = sdb.Sellers.Where(s => s.Username.Equals(seller.Username) && s.Password.Equals(seller.Password)).FirstOrDefault();
                 if(user == null)
                 {
-                 TempData["Message"] = "Username or Password is incorrect";
+                 TempData["Message"] = "Password is incorrect";
                 }
                 else if(user.Password == sellerToUpdate.Password && user.Username == sellerToUpdate.Username)
                 {
@@ -132,7 +133,7 @@ namespace WebDevAssignmnet2.Controllers
                 }
                 else
                 {
-                    TempData["Message"] = "Username or Password is incorrect";
+                    TempData["Message"] = "Password is incorrect";
                 }
                  return View(sellerToUpdate);
             }
